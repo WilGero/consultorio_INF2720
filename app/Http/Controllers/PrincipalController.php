@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tratamiento;
 use Illuminate\Http\Request;
 
 class PrincipalController extends Controller
 {
     //
-    public function index()
+    public function principal()
     {
-        return view('pagina principal.index');
+        return view('pagina principal.principal'); 
     }
     public function paciente()
     {
@@ -17,14 +18,16 @@ class PrincipalController extends Controller
     }
     public function tratamiento()
     {
-        return view('pagina principal.tratamiento');
+        //$tratamientos=Tratamiento::all();
+        $tratamientos=Tratamiento::paginate();
+        return view('pagina principal.tratamiento',compact('tratamientos'));
     }
     public function cita()
     {
         return view('pagina principal.cita');
     }
-    public function show()
+    public function historial()
     {
-        return view('pagina principal.show');
+        return view('pagina principal.historial');
     }
 }

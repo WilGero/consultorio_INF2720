@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTratamientosTable extends Migration
+class CreateCitasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTratamientosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tratamientos', function (Blueprint $table) {
+        Schema::create('citas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->text('descripcion');
-            $table->integer('duracion');
-            $table->bigInteger('costo');
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateTratamientosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tratamientos');
+        Schema::dropIfExists('citas');
     }
 }

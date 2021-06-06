@@ -24,6 +24,7 @@ class TratamientoFactory extends Factory
         return [
             //
             'nombre'=>$this->faker->sentence(),
+            'descripcion'=>$this->faker->paragraph(),
             'duracion'=>$this->faker->randomNumber(),
             'costo'=>$this->faker->randomNumber(),
         ];

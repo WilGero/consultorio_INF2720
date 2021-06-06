@@ -1,7 +1,7 @@
 @extends('layouts.plantilla')
 
-@section('title','login')
+@section('title','login consultorio')
 
 @section('content')
-    <h1>Bienvenido al login</h1>
+    <h1>Bienvenido al login consultorio</h1>
 @endsection
