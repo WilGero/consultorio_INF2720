@@ -10,5 +10,10 @@
 
     <p><strong>Costo: </strong>{{$tratamiento->costo                                                                                                                                                                                                      }} Bs</p>
     <p>{{$tratamiento->descripcion}}</p>  
+    <form action="{{route('tratamientos.destroy',$tratamiento)}}" method="POST">
+    @csrf
+    @method('delete')
+    <button type="submit">Eliminar</button>
+    </form>
 @endsection
 

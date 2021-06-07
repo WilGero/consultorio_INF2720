@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tratamiento extends Model
 {
     use HasFactory;
+    //protected $fillable = ['nombre','descripcion','costo'];
+    protected $guarded = [];
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tratamiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTratamiento;
+use App\Http\Requests\UpdateTratamiento;
 
 class TratamientoController extends Controller
 {
@@ -33,22 +35,20 @@ class TratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTratamiento $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'costo' => 'required'
-        ]);
+        
 
         //
-        $tratamiento=new Tratamiento();
+        /*$tratamiento=new Tratamiento();
 
         $tratamiento->nombre = $request->nombre;
         $tratamiento->descripcion = $request->descripcion;
         $tratamiento->costo = $request->costo;
 
-        $tratamiento->save();
+        $tratamiento->save();*/
+        $tratamiento = Tratamiento::create($request->all());
+
         return redirect()->route('tratamientos.show',$tratamiento);
     }
 
@@ -82,22 +82,21 @@ class TratamientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Tratamiento $tratamiento)
+    public function update(UpdateTratamiento $request,Tratamiento $tratamiento)
     {
         
-        $request->validate([
+        /*$request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
             'costo' => 'required'
-        ]);
+        ]);*/
         
-        
-        
-        $tratamiento->nombre=$request->nombre;
+        /*$tratamiento->nombre=$request->nombre;
         $tratamiento->descripcion=$request->descripcion;
         $tratamiento->costo=$request->costo;
 
-        $tratamiento->save();
+        $tratamiento->save();*/
+        $tratamiento->update($request->all());
 
         return redirect()->route('tratamientos.show',$tratamiento);
     }
@@ -108,8 +107,10 @@ class TratamientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tratamiento $tratamiento)
     {
         //
+        $tratamiento->delete();
+        return redirect()->route('principal.tratamiento',$tratamiento);
     }
 }

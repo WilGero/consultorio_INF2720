@@ -20,7 +20,7 @@
             <br>
             Descripción:
             <br>
-            <textarea name="descripcion" rows="5" >{{old('descripcion')}}</textarea>
+            <textarea name="descripcion" rows="5">{{old('descripcion')}}</textarea>
         </label>
         @error('descripcion')
             <br>

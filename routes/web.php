@@ -29,3 +29,4 @@ Route::post('pagina principal/tratamientos',[TratamientoController::class,'store
 Route::get('pagina principal/tratamientos/{tratamiento}',[TratamientoController::class,'show'] )->name('tratamientos.show');
 Route::get('pagina principal/tratamientos/{tratamiento}/edit', [TratamientoController::class,'edit'] )->name('tratamientos.edit');
 Route::put('pagina principal/tratamientos/{tratamiento}', [TratamientoController::class,'update'] )->name('tratamientos.update');
+Route::delete('pagina principal/tratamientos/{tratamiento}', [TratamientoController::class,'destroy'] )->name('tratamientos.destroy');
