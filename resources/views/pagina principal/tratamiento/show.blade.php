@@ -5,7 +5,9 @@
 @section('content')
     <h1>Este es el tratamiento {{$tratamiento->nombre}}</h1>
     <a href="{{route('principal.tratamiento')}}">Volver a Tratamientos</a>
-    <p><strong>Citas: </strong>{{$tratamiento->duracion}} </p> 
+    <br>
+    <a href="{{route('tratamientos.edit',$tratamiento)}}">Editar Tratamiento</a>
+
     <p><strong>Costo: </strong>{{$tratamiento->costo                                                                                                                                                                                                      }} Bs</p>
     <p>{{$tratamiento->descripcion}}</p>  
 @endsection

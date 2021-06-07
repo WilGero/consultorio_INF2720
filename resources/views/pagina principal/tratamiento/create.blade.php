@@ -4,32 +4,43 @@
 
 @section('content')
     <h1>Agregue un nuevo tratamiento</h1>
-    <a href="">Agregar</a>
-    <form action="">
+    <form action="{{route('tratamientos.store')}}" method="POST">
+        @csrf
         <label>
             Nombre:
             <br>
-            <input type="text" name="nombre">
-            <br>
+            <input type="text" name="nombre" value="{{old('nombre')}}">
         </label>
+        @error('nombre')
+            <br>
+                <small>*{{$message}}</small>
+            <br>    
+        @enderror        
         <label>
+            <br>
             Descripción:
             <br>
-            <textarea name="descripcion" rows="5"></textarea>
-            <br>
+            <textarea name="descripcion" rows="5" >{{old('descripcion')}}</textarea>
         </label>
-        <label>
-            Duración:
+        @error('descripcion')
             <br>
-            <input type="duracion">
-            <br>
-        </label>
+                <small>*{{$message}}</small>
+            <br>    
+        @enderror
         <label>
+            <br>
             Costo:
             <br>
-            <input type="costo">
-            <br>
+            <input type="text" name="costo" value="{{old('costo')}}">
         </label>
+        @error('costo')
+            <br>
+                <small>*{{$message}}</small>
+            <br>    
+        @enderror
+        <br>
+        <button type="submit">registrar tratamiento</button>
+        <a href="{{route('principal.tratamiento')}}">Volver a Tratamientos</a>
     </form>
 @endsection
 

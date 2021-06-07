@@ -17,8 +17,7 @@ class CreateTratamientosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('descripcion');
-            $table->integer('duracion');
-            $table->bigInteger('costo');
+            $table->integer('costo');
             $table->timestamps();
         });
     }

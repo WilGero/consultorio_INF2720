@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', LoginController::class,'index');
+Route::get('/', LoginController::class,'index')->name('login');
 Route::get('pagina principal',[PrincipalController::class,'principal'])->name('pagina.principal');
 Route::get('pagina principal/pacientes',[PrincipalController::class,'paciente'] )->name('principal.paciente');
 Route::get('pagina principal/tratamientos',[PrincipalController::class,'tratamiento'])->name('principal.tratamiento');
@@ -24,6 +24,8 @@ Route::get('pagina principal/citas', [PrincipalController::class,'cita'])->name(
 Route::get('pagina principal/historial', [PrincipalController::class,'historial'])->name('principal.historial');
 
 //Para la ventana Tratamientos
-Route::get('pagina principal/tratamientos/crear tratamiento',[TratamientoController::class,'create'] )->name('tratamiento.create');
-//Route::post('pagina principal/tratamientos',TratamientoController::class,'store');
-Route::get('pagina principal/tratamientos/{id}',[TratamientoController::class,'show'] )->name('ver.tratamiento');
+Route::get('pagina principal/tratamientos/create',[TratamientoController::class,'create'] )->name('tratamientos.create');
+Route::post('pagina principal/tratamientos',[TratamientoController::class,'store'])->name('tratamientos.store');
+Route::get('pagina principal/tratamientos/{tratamiento}',[TratamientoController::class,'show'] )->name('tratamientos.show');
+Route::get('pagina principal/tratamientos/{tratamiento}/edit', [TratamientoController::class,'edit'] )->name('tratamientos.edit');
+Route::put('pagina principal/tratamientos/{tratamiento}', [TratamientoController::class,'update'] )->name('tratamientos.update');

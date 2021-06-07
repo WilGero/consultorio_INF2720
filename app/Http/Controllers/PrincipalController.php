@@ -19,7 +19,7 @@ class PrincipalController extends Controller
     public function tratamiento()
     {
         //$tratamientos=Tratamiento::all();
-        $tratamientos=Tratamiento::paginate();
+        $tratamientos=Tratamiento::orderBy('id','desc')->paginate();
         return view('pagina principal.tratamiento',compact('tratamientos'));
     }
     public function cita()

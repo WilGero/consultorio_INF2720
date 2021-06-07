@@ -22,8 +22,7 @@ class TratamientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //
         return view('pagina principal/tratamiento.create');
     }
@@ -36,8 +35,21 @@ class TratamientoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'costo' => 'required'
+        ]);
+
         //
-        
+        $tratamiento=new Tratamiento();
+
+        $tratamiento->nombre = $request->nombre;
+        $tratamiento->descripcion = $request->descripcion;
+        $tratamiento->costo = $request->costo;
+
+        $tratamiento->save();
+        return redirect()->route('tratamientos.show',$tratamiento);
     }
 
     /**
@@ -46,10 +58,8 @@ class TratamientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show(Tratamiento $tratamiento){
         //
-        $tratamiento=Tratamiento::find($id);
         return view('pagina principal/tratamiento.show',compact('tratamiento'));
     }
 
@@ -59,9 +69,10 @@ class TratamientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tratamiento  $tratamiento)
     {
-        //
+        return view('pagina principal/tratamiento.edit',compact('tratamiento'));
+         
     }
 
     /**
@@ -71,9 +82,24 @@ class TratamientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Tratamiento $tratamiento)
     {
-        //
+        
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'costo' => 'required'
+        ]);
+        
+        
+        
+        $tratamiento->nombre=$request->nombre;
+        $tratamiento->descripcion=$request->descripcion;
+        $tratamiento->costo=$request->costo;
+
+        $tratamiento->save();
+
+        return redirect()->route('tratamientos.show',$tratamiento);
     }
 
     /**
